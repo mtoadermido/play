@@ -65,28 +65,33 @@ public class BlockingBug {
 
         // try to delete partial data
         // expect to fail
-/*
-        try {
-            zkClient.deleteNodes(
-                format("%s/%s", ZooKeeper.ZOOKEEPER_ROOT_NODE,
-                       ZooKeeper.ZOOKEEPER_EPHEMERALS),
-                ZooKeeper.ZOOKEEPER_ROOT_NODE);
-            log.debug("It shouldn't have passed !! ");
-        } catch (InterruptedException e) {
-            //
-        } catch (KeeperException e) {
-            log.debug("Exception thrown as expected");
+
+        boolean forceDeletionError = true;
+
+        if ( forceDeletionError ) {
+            try {
+                zkClient.deleteNodes(
+                    format("%s/%s", ZooKeeper.ZOOKEEPER_ROOT_NODE,
+                           ZooKeeper.ZOOKEEPER_EPHEMERALS),
+                    ZooKeeper.ZOOKEEPER_ROOT_NODE);
+                log.debug("It shouldn't have passed !! ");
+            } catch (InterruptedException e) {
+                //
+            } catch (KeeperException e) {
+                log.debug("Exception thrown as expected");
+            }
         }
-*/
 
         // kill the client
         log.debug("Destroying client");
         if (ephemeralClient != null) {
             ephemeralClient.destroyHard();
+//            ephemeralClient.destroySoft();
         }
 
-//        log.debug("Try to let the negociated timeout expire");
+//        log.debug("Try to let the ephemeral timeout expire");
 //        Thread.sleep(20*1000);
+
         // try to delete and expect to fail
         log.debug("Trying to clean the root tree");
         try {

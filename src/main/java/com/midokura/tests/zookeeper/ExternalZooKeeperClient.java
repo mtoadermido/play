@@ -165,4 +165,12 @@ public class ExternalZooKeeperClient {
 
     }
 
+    public void destroySoft() {
+        clientProcess.destroy();
+        try {
+            clientProcess.waitFor();
+        } catch (InterruptedException e) {
+            //
+        }
+    }
 }
