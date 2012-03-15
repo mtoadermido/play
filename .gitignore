@@ -1,0 +1,5 @@
+src/main/resources/classpath.properties
+target/
+.idea/
+*.iml
+*.log
