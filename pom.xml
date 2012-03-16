@@ -10,11 +10,6 @@
     <packaging>jar</packaging>
 
     <repositories>
-        <repository>
-            <id>mido-maven</id>
-            <name>mido-maven</name>
-            <url>http://mido-iida-1.midokura.jp:8081/artifactory/repo</url>
-        </repository>
 
         <repository>
             <id>guava-reflection</id>
@@ -48,8 +43,6 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>3.4.2</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>/usr/share/zookeeper/zookeeper-3.4.2-mido.jar</systemPath>-->
         </dependency>
 
         <dependency>
