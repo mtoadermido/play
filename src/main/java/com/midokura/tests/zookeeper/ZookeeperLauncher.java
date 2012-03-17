@@ -43,7 +43,7 @@ public class ZookeeperLauncher {
 
     final String JAVA_OPTS = "";
 
-    final String ZOO_KEEPER_ROOT_LOGGER = "INFO,ROLLINGFILE";
+    final String ZOO_KEEPER_ROOT_LOGGER = "DEBUG,ROLLINGFILE";
 
     private final static org.slf4j.Logger log =
         org.slf4j.LoggerFactory.getLogger(ZookeeperLauncher.class);
@@ -51,6 +51,11 @@ public class ZookeeperLauncher {
     private Process zooKeeperProcess;
 
     public static ZookeeperLauncher launch() throws IOException {
+        try {
+            new ProcessBuilder("rm", "-rf", "target/zookeeper/data").start().waitFor();
+        } catch (InterruptedException e) {
+            log.error("While removing the old data", e);
+        }
         return new ZookeeperLauncher().start();
     }
 

@@ -89,8 +89,8 @@ public class BlockingBug {
 //            ephemeralClient.destroySoft();
         }
 
-//        log.debug("Try to let the ephemeral timeout expire");
-//        Thread.sleep(20*1000);
+        log.debug("Try to let the ephemeral timeout expire");
+        Thread.sleep(20*1000);
 
         // try to delete and expect to fail
         log.debug("Trying to clean the root tree");
